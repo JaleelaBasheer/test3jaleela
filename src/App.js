@@ -1,12 +1,14 @@
 import './App.css';
 import { useState } from "react";
 import * as XLSX from "xlsx";
+import Examples from './components/Examples';
+import Testing from './components/Testing';
 
 
 function App() {
 
   const [excelData, setExcelData] = useState([]);
-    const [excelData1, setExcelData1] = useState([]);
+  const [newArray, setNewArray] = useState([]);
 
 
   const handleFileUpload = (e) => {
@@ -26,24 +28,24 @@ function App() {
 
       // Update state with parsed data
       setExcelData(parsedData);
-    };
 
+        
+    };
     reader.readAsArrayBuffer(file);
   }
-
-
+   
 
 
   return (
      <div className="App">
       <h3 className="text-center mt-4 mb-3">Prepare a Excel parser to list all items reading this table and store the data in the table</h3>
-      <div className="text-center ps-5 pe-5 w-100">
-      <input className='btn btn-warning mt-3'
+      <div className="text-center ps-5 pe-5 w-100" >
+      <input className='btn btn-dark mt-3'
   type="file" 
   accept=".xlsx, .xls" 
   onChange={handleFileUpload} 
 />
-<table >
+<table  className='table'>
         <thead>
           <tr>
             {excelData.length > 0 &&
@@ -63,17 +65,19 @@ function App() {
         </tbody>
       </table>
 
-
+    
        </div> 
+
+
        
-
-
- 
-
 <br /><br />
+<Examples></Examples>
+<Testing></Testing>
 <p className='text-center fw-bold'>... designed by JaleelaBasheer ...</p>
 
 </div>
+
+
 
 ); 
 }
